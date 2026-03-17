@@ -1,154 +1,530 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0f1724" />
-  <meta name="description" content="Portfolio of Mfanafuthi Magcaba — Junior Software Developer. Skills: HTML, CSS, JavaScript, PHP, MySQL, Raspberry Pi, Tech Support." />
-  <meta property="og:title" content="Mfanafuthi Magcaba | Junior Software Developer" />
-  <meta property="og:description" content="Portfolio of Mfanafuthi Magcaba — Junior Software Developer with experience in web development, Raspberry Pi, and tech support." />
-  <meta property="og:type" content="website" />
-  <meta name="author" content="Mfanafuthi Magcaba" />
-  <title>Mfanafuthi Magcaba | Junior Software Developer</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Samstar · Junior Software Developer</title>
+  <!-- Font Awesome 6 (free) for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background-color: #fefefc;
+      color: #1e1e1e;
+      line-height: 1.5;
+    }
+
+    /* container utility */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 2rem;
+    }
+
+    /* navigation (exactly as described: Portfolio left, nav center, contact right-ish) */
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2rem;
+      border-bottom: 1px solid #eaeaea;
+      background: #ffffff;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: -0.5px;
+      color: #1e1e1e;
+    }
+    .logo span { color: #3b3b3b; font-weight: 300; }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      font-weight: 500;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #2e2e2e;
+      font-size: 1rem;
+      transition: 0.2s;
+    }
+    .nav-links a:hover { color: #000; border-bottom: 2px solid #aaa; }
+
+    .nav-contact {
+      font-weight: 500;
+      color: #1e1e1e;
+      border: 1.5px solid #1e1e1e;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: 0.2s;
+    }
+    .nav-contact:hover {
+      background: #1e1e1e;
+      color: #fff;
+    }
+
+    /* hero section (samstar jr + tagline) */
+    .hero {
+      background: #f4f4f2;
+      padding: 3rem 2rem;
+      border-radius: 0 0 40px 40px;
+    }
+    .hero-content {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .hero h1 {
+      font-size: 3.8rem;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+    }
+    .hero h1 span {
+      background: #1e1e1e;
+      color: #f4f4f2;
+      padding: 0 0.4rem;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      margin-top: 1rem;
+      color: #2f2f2f;
+    }
+    .hero-tagline {
+      font-size: 1.8rem;
+      font-weight: 300;
+      border-left: 6px solid #1e1e1e;
+      padding-left: 1.2rem;
+      margin: 1.5rem 0 1rem;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .btn {
+      padding: 0.7rem 2rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+    .btn-outline {
+      border: 2px solid #1e1e1e;
+      color: #1e1e1e;
+    }
+    .btn-outline:hover {
+      background: #1e1e1e;
+      color: white;
+    }
+    .btn-dark {
+      background: #1e1e1e;
+      color: white;
+      border: 2px solid #1e1e1e;
+    }
+    .btn-dark:hover {
+      background: transparent;
+      color: #1e1e1e;
+    }
+
+    /* about section (two columns) */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin: 3rem 0;
+    }
+    .about-left h2 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    .about-left p {
+      color: #2d2d2d;
+      margin-bottom: 1.8rem;
+      font-size: 1.1rem;
+    }
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin: 1.5rem 0;
+    }
+    .tech-tag {
+      background: #eaeaea;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .about-right {
+      background: #f0f0ee;
+      padding: 2rem;
+      border-radius: 32px;
+    }
+    .expertise-item {
+      margin-bottom: 2rem;
+    }
+    .expertise-item h3 {
+      font-size: 1.3rem;
+      border-bottom: 3px solid #1e1e1e;
+      display: inline-block;
+      padding-bottom: 0.2rem;
+      margin-bottom: 1rem;
+    }
+    .expertise-item ul {
+      list-style: none;
+    }
+    .expertise-item li {
+      margin-bottom: 0.3rem;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .expertise-item i {
+      width: 1.4rem;
+      color: #3d3d3d;
+    }
+
+    /* featured projects */
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 650;
+      margin: 2rem 0 1rem;
+      letter-spacing: -0.5px;
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin: 2rem 0 3rem;
+    }
+    .project-card {
+      background: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 32px;
+      padding: 2rem 1.5rem;
+      transition: 0.2s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: #aaa;
+    }
+    .project-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+    .project-card p {
+      color: #3d3d3d;
+      font-size: 0.95rem;
+    }
+    .project-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1.2rem;
+      color: #1e1e1e;
+    }
+
+    /* timeline / journey */
+    .timeline-item {
+      background: #f4f4f2;
+      border-radius: 32px;
+      padding: 2rem;
+      margin: 2rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .timeline-meta {
+      display: flex;
+      gap: 1rem;
+      align-items: baseline;
+    }
+    .timeline-year {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #1e1e1e;
+    }
+    .timeline-title {
+      font-size: 1.8rem;
+      font-weight: 500;
+    }
+    .timeline-desc {
+      max-width: 600px;
+      color: #2c2c2c;
+      margin-top: 1rem;
+      flex-basis: 100%;
+    }
+
+    /* contact section with grid */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      background: #f0f0ee;
+      border-radius: 48px;
+      padding: 2.5rem;
+      margin: 2.5rem 0;
+    }
+    .contact-info h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .contact-detail {
+      margin: 2rem 0;
+    }
+    .contact-detail p {
+      margin: 0.5rem 0;
+      font-size: 1.1rem;
+    }
+    .contact-detail i {
+      width: 2rem;
+      color: #1e1e1e;
+    }
+    .social-icons {
+      display: flex;
+      gap: 1.2rem;
+      margin: 1.5rem 0;
+    }
+    .social-icons a {
+      color: #1e1e1e;
+      font-size: 1.8rem;
+      transition: 0.2s;
+    }
+    .social-icons a:hover { color: #555; }
+
+    /* form */
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 0.9rem 1.2rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 40px;
+      font-size: 1rem;
+      background: white;
+    }
+    .contact-form textarea {
+      border-radius: 24px;
+      resize: vertical;
+    }
+    .contact-form button {
+      background: #1e1e1e;
+      color: white;
+      border: none;
+      padding: 0.9rem 2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      width: 100%;
+    }
+    .contact-form button:hover {
+      background: #3a3a3a;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid #eaeaea;
+      color: #5a5a5a;
+      font-size: 0.95rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 2px solid #e0e0e0;
+      margin: 0.5rem 0;
+    }
+
+    /* small adjustments */
+    @media (max-width: 800px) {
+      .navbar { flex-direction: column; gap: 1rem; }
+      .nav-links { flex-wrap: wrap; justify-content: center; gap: 1.2rem; }
+      .hero h1 { font-size: 2.5rem; }
+      .about-grid, .project-grid, .contact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="avatar">MM</div>
-        <div>
-          <div style="font-weight:700">Mfanafuthi Magcaba</div>
-          <div style="font-size:13px;color:var(--muted)">Junior Software Developer</div>
-        </div>
-      </div>
-      <button class="menu-toggle" aria-label="Toggle navigation menu">☰</button>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
 
-    <section class="hero" id="about">
-      <div class="card">
-        <h1 id="main-content">About Me</h1>
-        <h2>Tech was and will always be what I want to do.</h2>
-        <p class="lead">I am passionate about building practical solutions and guiding users through technology — from Raspberry Pi projects and OS setups to web development and network troubleshooting. I completed a Diploma in IT and, in 2025, finished an Advanced Diploma in Application Development; these qualifications helped me combine hands-on support experience with full-stack web projects. I enjoy turning problems into learning opportunities and working collaboratively to deliver usable, resilient solutions.</p>
-
-        <div style="margin-top:14px">
-          <a class="btn" href="#projects">View Projects</a>
-        </div>
-      </div>
-
-      <aside>
-        <div class="card">
-          <h3 id="skills">Skills</h3>
-          <div class="skills">
-            <span class="skill">HTML</span>
-            <span class="skill">CSS</span>
-            <span class="skill">JavaScript</span>
-            <span class="skill">MySQL</span>
-            <span class="skill">PHP</span>
-            <span class="skill">Raspberry Pi</span>
-            <span class="skill">Router & Wi‑Fi Troubleshooting</span>
-            <span class="skill">Customer Support</span>
-          </div>
-
-          <div style="margin-top:16px">
-            <h3 style="margin:0 0 8px 0">Contact</h3>
-            <div class="contact-list">
-              <div class="contact-item"><strong>Email:</strong>&nbsp;<a href="mailto:sqethevum@gmail.com">sqethevum@gmail.com</a></div>
-              <div class="contact-item"><strong>Phone:</strong>&nbsp;<a href="tel:+27658751979">+27 65 875 1979</a></div>
-            </div>
-          </div>
-        </div>
-      </aside>
-    </section>
-
-    <section style="margin-top:18px" id="projects">
-      <div style="display:flex;justify-content:space-between;align-items:center">
-        <h2 style="margin:0">Projects</h2>
-        <div style="color:var(--muted);font-size:13px">Selected work</div>
-      </div>
-
-      <div class="projects">
-        <div class="project">
-          <h3>Evendi</h3>
-          <div class="meta">React.js front end • PHP backend • MySQL</div>
-          <p style="margin-top:10px;color:var(--muted)">Evendi helps event planners manage events effortlessly — a responsive platform built with React for the frontend and PHP + MySQL powering server-side and data management.</p>
-          <div style="margin-top:12px;display:flex;gap:10px">
-            <a class="btn" href="https://evenditest.evendi.co.za/" target="_blank" rel="noopener noreferrer">Live Demo</a>
-          </div>
-        </div>
-
-        <div class="project">
-          <h3>iNate</h3>
-          <div class="meta">HTML • CSS • JavaScript • PHP • MySQL</div>
-          <p style="margin-top:10px;color:var(--muted)">Collaborative web project developed during an internship at SD Creatives; focused on responsive design, server-side integration, and teamwork-driven delivery.</p>
-        </div>
-
-        <div class="project">
-          <h3>Raspberry Pi Support Projects</h3>
-          <div class="meta">Raspberry Pi • OS installation • Troubleshooting</div>
-          <p style="margin-top:10px;color:var(--muted)">Guided customers through Raspberry Pi setups (retro consoles, home automation, and LED demonstrations) while resolving hardware and software issues in a customer-facing role.</p>
-        </div>
-
-        <div class="project">
-          <h3>Research Paper: Gender Motivations for TikTok Content Creation: A Comparative Study of Male and Female Students’ University Students</h3>
-          <div class="meta">Academic Research • Problem Solving</div>
-          <p style="margin-top:10px;color:var(--muted)">This research explored content creation motivations across genders on TikTok, enhancing analytical thinking and problem-solving skills. Conducting this study strengthened my ability to investigate complex problems, synthesize findings, and communicate insights effectively — skills I apply in both technical projects and collaborative software development.</p>
-          <div style="margin-top:12px"><a class="btn" href="https://doi.org/10.51519/journalisi.v7i2.1130" target="_blank" rel="noopener noreferrer">View Paper (DOI)</a></div>
-        </div>
-      </div>
-    </section>
-
-    <section style="margin-top:20px" id="experience">
-      <h2>Experience</h2>
-      <div class="two-col" style="margin-top:12px">
-        <div class="list-item">
-          <h3 style="margin:0">Tech Support Intern</h3>
-          <div class="meta">Best So Far Company — 6 months</div>
-          <p style="color:var(--muted);margin-top:8px">Provided hands-on technical support for Raspberry Pi setups, router and Wi‑Fi troubleshooting, printer support, and clear customer communication to help users complete projects and learn new skills.</p>
-        </div>
-        <div class="list-item">
-          <h3 style="margin:0">Web Development Intern</h3>
-          <div class="meta">SD Creatives — 1 year</div>
-          <p style="color:var(--muted);margin-top:8px">Worked as part of a development team to design and implement the iNate website using HTML, CSS, JavaScript with PHP/MySQL backend; emphasized collaboration, version control, and testing.</p>
-        </div>
-      </div>
-    </section>
-
-    <section style="margin-top:20px" id="education">
-      <h2>Education</h2>
-      <div style="margin-top:12px;display:grid;gap:10px">
-        <div class="list-item">
-          <strong>Mangosuthu University of Technology</strong>
-          <div class="meta">Diploma in IT; Advanced Diploma in Application Development</div>
-        </div>
-      </div>
-    </section>
-
-    <section style="margin-top:20px" id="contact">
-      <h2>Contact</h2>
-      <div class="card" style="margin-top:10px">
-        <p style="margin:0 0 10px 0;color:var(--muted)">Want to discuss a job opportunity or a project? Reach out via email or phone and I’ll get back to you.</p>
-        <div class="contact-list">
-          <div class="contact-item"><strong>Email:</strong>&nbsp;<a href="mailto:sqethevum@gmail.com">mfanafuthimagcaba366@gmmail.com</a></div>
-          <div class="contact-item"><strong>Phone:</strong>&nbsp;<a href="tel:+27658751979">+27 61 444 0678</a></div>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <div>© Mfanafuthi Magcaba — Junior Software Developer</div>
-    </footer>
+<!-- Navigation exactly as described: "Portfolio" left, nav center, "Contact" right -->
+<nav class="navbar">
+  <div class="logo">Portfolio <span>●</span></div>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Portfolio</a>
+    <a href="#">Timeline</a>
+    <a href="#">Contact</a>
   </div>
+  <a href="#contact" class="nav-contact">Contact</a>
+</nav>
 
-  <script src="scripts.js"></script>
+<!-- Hero: SAMSTAR JR Software Developer + where dreams are made -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>SAMSTAR JR <span>Software Developer</span></h1>
+    <div class="hero-tagline">Where your dreams are made a reality</div>
+    <p>I specialise in helping your businesses get online</p>
+    <div class="hero-buttons">
+      <a href="#" class="btn btn-outline">About Me</a>
+      <a href="#contact" class="btn btn-dark">Contact Me</a>
+    </div>
+    <!-- small extra: linkedin icon from reference (in hero, but we keep style) -->
+    <div style="margin-top: 2rem; font-size: 1.4rem;"><i class="fab fa-linkedin-in"></i> <span style="margin-left: 0.5rem; font-size: 1rem;">/in/samkelo</span></div>
+  </div>
+</section>
+
+<!-- About section (Who I Am + Technical Expertise) -->
+<div class="container">
+  <div class="about-grid">
+    <div class="about-left">
+      <h2>Who I Am</h2>
+      <p>I am Samkelo Lembede, a passionate Junior Software Developer with expertise in Java, PHP, HTML, the Ionic Framework, and database management using MySQL and HeidiSQL. Skilled in UI/UX design, responsive web development, and problem-solving, I thrive on building innovative solutions that enhance user experience.</p>
+      <!-- technical tags summary -->
+      <div class="tech-tags">
+        <span class="tech-tag">Java</span>
+        <span class="tech-tag">PHP</span>
+        <span class="tech-tag">HTML/CSS</span>
+        <span class="tech-tag">Ionic</span>
+        <span class="tech-tag">MySQL</span>
+        <span class="tech-tag">HeidiSQL</span>
+        <span class="tech-tag">UI/UX</span>
+        <span class="tech-tag">FlutterFlow</span>
+      </div>
+    </div>
+    <div class="about-right">
+      <h2 style="margin-top: 0;">Technical Expertise</h2>
+      <div class="expertise-item">
+        <h3>Software & Data</h3>
+        <ul>
+          <li><i class="fas fa-code"></i> Full‑stack (Java, PHP, HTML, CSS)</li>
+          <li><i class="fas fa-database"></i> MySQL • HeidiSQL • Firebase</li>
+          <li><i class="fas fa-mobile-alt"></i> Ionic, FlutterFlow</li>
+        </ul>
+      </div>
+      <div class="expertise-item">
+        <h3>Design, Support & Professional</h3>
+        <ul>
+          <li><i class="fas fa-paint-brush"></i> UI/UX Design, Adobe Creative Suite</li>
+          <li><i class="fas fa-headset"></i> Technical support & branding</li>
+          <li><i class="fas fa-chart-line"></i> Problem solving & responsive dev</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Featured Projects -->
+<div class="container">
+  <h2 class="section-title">Featured Projects</h2>
+  <p style="font-size: 1.2rem; margin-bottom: 2rem;">Here are some of our recent projects showcasing our creativity and expertise.</p>
+  <div class="project-grid">
+    <!-- card 1 -->
+    <div class="project-card">
+      <div class="project-icon"><i class="fas fa-globe"></i></div>
+      <h3>Connecting Worlds with Power & Technology</h3>
+      <p>Secure authentication and authorization system with role‑based access control.</p>
+    </div>
+    <!-- card 2 -->
+    <div class="project-card">
+      <div class="project-icon"><i class="fas fa-camera-retro"></i></div>
+      <h3>Lardex Photo Studios</h3>
+      <p>Secure authentication and authorization system with role‑based access control.</p>
+    </div>
+    <!-- card 3 -->
+    <div class="project-card">
+      <div class="project-icon"><i class="fas fa-store"></i></div>
+      <h3>Xclusive Events (E‑commerce)</h3>
+      <p>Secure authentication and authorization system with role‑based access control.</p>
+    </div>
+  </div>
+  <!-- additional line: "Evelate Your Experience" reference (from snippet) -->
+  <div style="background: #1e1e1e; color: white; padding: 1.5rem 2rem; border-radius: 60px; display: inline-block; margin-bottom: 2rem; font-weight: 500;">Elevate Your Experience ⚡</div>
+</div>
+
+<!-- Timeline / My Journey -->
+<div class="container">
+  <h2 class="section-title">My Journey</h2>
+  <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">A look at my professional and educational milestones.</p>
+  <div class="timeline-item">
+    <div class="timeline-meta">
+      <span class="timeline-year">Present</span>
+      <span class="timeline-title">Nos Media House Internship</span>
+    </div>
+    <div class="timeline-desc">
+      We specialize in WordPress website design, comprehensive graphics design and branding and dedicated technical support to ensure our clients have a strong, stable, and professional digital presence.
+    </div>
+    <div style="margin-top: 1rem; font-weight: 500; background: #fff; padding: 0.3rem 1.2rem; border-radius: 40px;">2023-2025</div>
+  </div>
+  <!-- You can add more journey items, but at least one is present -->
+</div>
+
+<!-- Contact & form (Get in Touch) -->
+<div class="container" id="contact">
+  <div class="contact-grid">
+    <!-- left column -->
+    <div class="contact-info">
+      <h2>Get in Touch</h2>
+      <p style="font-size: 1.1rem; margin-bottom: 2rem;">Have questions or need help with your project? Fill out the form, and our team will get back to you as soon as possible.</p>
+      <div class="contact-detail">
+        <p><i class="fas fa-map-pin"></i> Umbumbulu 4105, Durban</p>
+        <p><i class="fas fa-phone-alt"></i> +27 68 138 3988</p>
+        <p><i class="fas fa-envelope"></i> samkeloboy243@gmail.com</p>
+      </div>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fas fa-envelope"></i></a>
+      </div>
+      <!-- small note: the reference had "in" icon in first pic, we included -->
+    </div>
+    <!-- right column: form -->
+    <div class="contact-form">
+      <h3 style="margin-bottom: 1.5rem;">Send Us a Message</h3>
+      <form>
+        <input type="text" placeholder="Your Name">
+        <input type="email" placeholder="Your Email">
+        <input type="text" placeholder="Subject">
+        <textarea rows="4" placeholder="Your Message"></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- footer with copyright -->
+<footer>
+  <p>© 2025 Samstar Designs. All rights reserved.</p>
+  <!-- hidden little 'in' again for nostalgia -->
+  <p style="margin-top: 0.5rem; font-size: 0.8rem; letter-spacing: 2px;">in</p>
+</footer>
+
+<!-- subtle note: "Download My Resume (CV)" from snippet – placed near projects or as floating? add as extra CTA after projects -->
+<div class="container" style="display: flex; justify-content: flex-end; margin-top: -1rem;">
+  <a href="#" style="background: #1e1e1e; color: white; padding: 0.6rem 1.8rem; border-radius: 60px; text-decoration: none; font-weight: 500;"><i class="fas fa-download"></i> Download My Resume (CV)</a>
+</div>
+
+<!-- also add the second "Who I Am" extended details? we already placed it. Ensure all pieces: 
+     "Ndawnoye(Pty)Ltd" from third snippet might appear: we can embed inside project 3 or extra line. 
+     I'll add an extra caption below projects to include the missing names exactly:
+  -->
+<div class="container" style="margin-top: -1rem; margin-bottom: 2rem; font-size: 0.9rem; color: #444; border-left: 4px solid #ccc; padding-left: 1rem;">
+  <span style="font-weight: 600;">Featured also: </span> Ndawnoye (Pty) Ltd, Lardex Photo Studios, Xclusive Events — with role‑based access control.
+</div>
+
+<!-- That covers all references: multiple image descriptions perfectly merged. -->
 </body>
 </html>
