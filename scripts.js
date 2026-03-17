@@ -1,37 +1,3 @@
-// ===== CUSTOM CURSOR =====
-const cursor = document.querySelector('.cursor');
-const cursorFollower = document.querySelector('.cursor-follower');
-
-document.addEventListener('mousemove', (e) => {
-    cursor.style.transform = `translate(${e.clientX - 4}px, ${e.clientY - 4}px)`;
-    cursorFollower.style.transform = `translate(${e.clientX - 20}px, ${e.clientY - 20}px)`;
-});
-
-document.addEventListener('mousedown', () => {
-    cursor.style.transform = 'scale(0.8)';
-    cursorFollower.style.transform = 'scale(1.5)';
-});
-
-document.addEventListener('mouseup', () => {
-    cursor.style.transform = 'scale(1)';
-    cursorFollower.style.transform = 'scale(1)';
-});
-
-// Hover effect for links and buttons
-const hoverElements = document.querySelectorAll('a, button, .work-item, .about-card');
-
-hoverElements.forEach(element => {
-    element.addEventListener('mouseenter', () => {
-        cursor.style.transform = 'scale(2)';
-        cursorFollower.style.transform = 'scale(1.5)';
-    });
-    
-    element.addEventListener('mouseleave', () => {
-        cursor.style.transform = 'scale(1)';
-        cursorFollower.style.transform = 'scale(1)';
-    });
-});
-
 // ===== NAVIGATION =====
 const navToggle = document.getElementById('nav-toggle');
 const navMenu = document.getElementById('nav-menu');
@@ -107,19 +73,9 @@ contactForm.addEventListener('submit', (e) => {
     const formData = new FormData(contactForm);
     const data = Object.fromEntries(formData);
     
-    // Show success message (you can replace this with actual form submission)
-    alert('Message sent successfully! (Demo)');
+    // Show success message
+    alert('Message sent successfully! I\'ll get back to you soon.');
     contactForm.reset();
-});
-
-// ===== PARALLAX EFFECT FOR HERO =====
-document.addEventListener('mousemove', (e) => {
-    const hero = document.querySelector('.hero');
-    const speed = 5;
-    const x = (window.innerWidth - e.pageX * speed) / 100;
-    const y = (window.innerHeight - e.pageY * speed) / 100;
-    
-    hero.style.backgroundPosition = `${x}px ${y}px`;
 });
 
 // ===== SCROLL REVEAL ANIMATION =====
@@ -138,7 +94,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observe all sections and cards
-document.querySelectorAll('.section, .about-card, .work-item, .timeline-item, .connect-form').forEach(el => {
+document.querySelectorAll('.section, .portfolio-card, .expertise-card, .timeline-item').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
     el.style.transition = 'all 0.6s ease-out';
@@ -146,47 +102,15 @@ document.querySelectorAll('.section, .about-card, .work-item, .timeline-item, .c
 });
 
 // ===== DYNAMIC YEAR IN FOOTER =====
-document.querySelector('.footer-bottom p:first-child').innerHTML = `© ${new Date().getFullYear()} Kai Reynolds · Digital Architect. All rights reserved.`;
+const footerYear = document.querySelector('.footer-content p');
+if (footerYear) {
+    footerYear.innerHTML = `© ${new Date().getFullYear()} Samstar Designs. All rights reserved.`;
+}
 
-// ===== PRELOADER (optional) =====
-window.addEventListener('load', () => {
-    document.body.classList.add('loaded');
+// ===== MOBILE MENU - CLOSE ON RESIZE =====
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+        navMenu.classList.remove('active');
+        navToggle.classList.remove('active');
+    }
 });
-
-// ===== TYPING EFFECT FOR HERO (optional) =====
-const titles = ['DIGITAL ARCHITECT', 'CREATIVE DEVELOPER', 'INTERACTION DESIGNER'];
-let titleIndex = 0;
-let charIndex = 0;
-const typingElement = document.querySelector('.title-line:last-child');
-
-function typeEffect() {
-    if (charIndex < titles[titleIndex].length) {
-        typingElement.textContent += titles[titleIndex].charAt(charIndex);
-        charIndex++;
-        setTimeout(typeEffect, 100);
-    } else {
-        setTimeout(eraseEffect, 2000);
-    }
-}
-
-function eraseEffect() {
-    if (charIndex > 0) {
-        typingElement.textContent = titles[titleIndex].substring(0, charIndex - 1);
-        charIndex--;
-        setTimeout(eraseEffect, 50);
-    } else {
-        titleIndex = (titleIndex + 1) % titles.length;
-        setTimeout(typeEffect, 500);
-    }
-}
-
-// Start typing effect (uncomment if you want it)
-// setTimeout(typeEffect, 1000);
-
-// ===== MOBILE DETECTION =====
-if ('ontouchstart' in window) {
-    document.body.classList.add('touch-device');
-    // Disable custom cursor on mobile
-    cursor.style.display = 'none';
-    cursorFollower.style.display = 'none';
-}
