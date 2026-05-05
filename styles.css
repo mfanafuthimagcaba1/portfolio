@@ -1218,3 +1218,161 @@ body {
         transform: translateY(0);
     }
 }
+
+/* ===== NDAWONYE PROJECT DETAIL PAGE ENHANCEMENTS ===== */
+
+/* Status badge styling */
+.project-status {
+    display: inline-block;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin: 1rem 0 0.5rem 0;
+    letter-spacing: 0.5px;
+}
+
+/* Challenges section styling */
+.project-detail-card ul li {
+    margin-bottom: 0.6rem;
+    line-height: 1.6;
+}
+
+/* Add spacing between h3 headings in project detail card */
+.project-detail-card h3 {
+    margin-top: 1.8rem;
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+    color: var(--dark);
+    font-weight: 600;
+}
+
+.project-detail-card h3:first-of-type {
+    margin-top: 0;
+}
+
+/* Improved tech stack tags in project detail */
+.project-detail-card .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin: 1rem 0 1.5rem 0;
+}
+
+.project-detail-card .project-tech span {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 0.4rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.project-detail-card .project-tech span:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+/* Role section highlight */
+.project-detail-card p strong {
+    color: var(--primary);
+}
+
+/* Image container enhancement */
+.project-detail-image {
+    position: sticky;
+    top: 100px;
+}
+
+.project-detail-image img {
+    transition: transform 0.4s ease;
+    border: 3px solid white;
+    box-shadow: var(--shadow-lg);
+}
+
+.project-detail-image img:hover {
+    transform: scale(1.02);
+}
+
+/* Back button/link styling (for consistency) */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--gray-100);
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    margin-bottom: 2rem;
+}
+
+.back-link:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateX(-5px);
+}
+
+.back-link i {
+    font-size: 0.9rem;
+}
+
+/* Mobile adjustments for project detail */
+@media (max-width: 768px) {
+    .project-detail-card {
+        padding: 1.5rem;
+    }
+    
+    .project-detail-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .project-detail-card .project-tech span {
+        padding: 0.3rem 1rem;
+        font-size: 0.75rem;
+    }
+    
+    .project-detail-image {
+        position: relative;
+        top: 0;
+    }
+}
+
+/* Subtle animation for project detail card */
+.project-detail-card {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Optional: Add a subtle gradient border to the project card */
+.project-detail-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.project-detail-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+}
