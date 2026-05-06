@@ -1375,4 +1375,20 @@ body {
     right: 0;
     height: 4px;
     background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+
+
+}
+
+.live-demo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    font-size: 0.75rem;
+    color: #6366f1;
+    font-weight: 500;
+}
+
+.live-demo-badge i {
+    font-size: 0.7rem;
 }
