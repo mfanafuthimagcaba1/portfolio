@@ -284,25 +284,36 @@
 
                 <div class="contact-form">
                     <h3>Send Me a Message</h3>
-                    <form id="contact-form">
-                        <div class="form-group">
-                            <input type="text" id="name" required>
-                            <label for="name">Your Name</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" required>
-                            <label for="email">Your Email</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="subject" required>
-                            <label for="subject">Subject</label>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" rows="4" required></textarea>
-                            <label for="message">Your Message</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-full">Send Message <i class="fa-solid fa-paper-plane"></i></button>
-                    </form>
+                  <form action="https://api.web3forms.com/submit" method="POST">
+
+                            <!-- Your Access Key -->
+                            <input type="hidden" name="access_key" value="0b780c8b-950d-438d-9442-8cde87521675">
+
+                            <div class="form-group">
+                                <input type="text" name="name" id="name" required>
+                                <label for="name">Your Name</label>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="email" name="email" id="email" required>
+                                <label for="email">Your Email</label>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" name="subject" id="subject" required>
+                                <label for="subject">Subject</label>
+                            </div>
+
+                            <div class="form-group">
+                                <textarea name="message" id="message" rows="4" required></textarea>
+                                <label for="message">Your Message</label>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-full">
+                                Send Message <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+
+                        </form>
                 </div>
             </div>
         </div>
